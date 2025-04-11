@@ -1,7 +1,7 @@
 import os
 from ultralytics import YOLO
-
-import os
+import matplotlib.pyplot as plt
+import cv2
 
 root_dir = "runs/train"
 
@@ -15,20 +15,6 @@ for subdir in os.listdir(root_dir):
 # Print all found paths
 for path in best_weights:
     print(path)
-
-
-# model = YOLO(path)
-
-# # Test on a single image (put your own image path)
-# results = model("dataset/UAVDT-processed/val/images/img000003.jpg", save=True)
-
-# # Show predictions inline
-# results[0].show()
-
-import os
-import cv2
-from ultralytics import YOLO
-import matplotlib.pyplot as plt
 
 # Load the trained YOLO model
 model = YOLO(path)
@@ -68,3 +54,17 @@ for img_file in os.listdir(image_dir):
     if count >= max_to_show:
         break
 
+# results = model("./image.jpg", conf=0.25)
+
+#     # Get rendered image with boxes
+# rendered_img = results[0].plot()  # This returns a BGR image
+
+#     # Convert to RGB for matplotlib
+# rendered_img = cv2.cvtColor(rendered_img, cv2.COLOR_BGR2RGB)
+
+#     # Display the image
+# plt.figure(figsize=(10, 8))
+# plt.imshow(rendered_img)
+# plt.title(f"Predictions for ../image.jpg")
+# plt.axis('off')
+# plt.show()
